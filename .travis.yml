@@ -5,7 +5,7 @@ env:
   - distro: centos7
   - distro: centos6
     playbook: test-source-install.yml
-  - distro: ubuntu1604
+#  - distro: ubuntu1604
 #  - distro: ubuntu1404
     playbook: test-source-install.yml
 #  - distro: debian8
