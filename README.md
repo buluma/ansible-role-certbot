@@ -1,6 +1,6 @@
 # Ansible Role: Certbot (for Let's Encrypt)
 
-[![Build Status](https://travis-ci.org/buluma/ansible-role-certbot.svg?branch=master)](https://travis-ci.org/buluma/ansible-role-certbot)
+[![Build Status](https://travis-ci.com/buluma/ansible-role-certbot.svg?branch=master)](https://travis-ci.com/buluma/ansible-role-certbot) [![CI](https://github.com/buluma/ansible-role-certbot/actions/workflows/ci.yml/badge.svg)](https://github.com/buluma/ansible-role-certbot/actions/workflows/ci.yml)
 
 Installs and configures Certbot (for Let's Encrypt).
 
@@ -89,7 +89,7 @@ None.
         certbot_auto_renew_hour: 5
     
       roles:
-        - geerlingguy.certbot
+        - buluma.certbot
 
 See other examples in the `tests/` directory.
 
