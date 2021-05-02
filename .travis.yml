@@ -3,10 +3,10 @@ services: docker
 
 env:
   - distro: centos7
-  - distro: centos6
+  - distro: centos8
     playbook: test-source-install.yml
   - distro: ubuntu1604
-  - distro: ubuntu1404
+  - distro: ubuntu1804
     playbook: test-source-install.yml
   - distro: debian8
     playbook: test-source-install.yml

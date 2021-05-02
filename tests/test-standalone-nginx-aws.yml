@@ -50,7 +50,7 @@
           Name: "certbot-standalone-nginx-test"
         group: ['default', 'certbot_test_http']
         instance_type: t2.micro
-        image: ami-02e98f78 # CentOS Linux 7 x86_64 HVM EBS
+        image: ami-02e98f78   # CentOS Linux 7 x86_64 HVM EBS
         region: "us-east-1"
         wait: yes
         wait_timeout: 500
