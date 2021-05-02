@@ -19,5 +19,5 @@
       when: ansible_os_family == 'Debian'
 
   roles:
-    - geerlingguy.git
+    - buluma.git
     - role_under_test
