@@ -2,14 +2,16 @@
 services: docker
 
 env:
-  - distro: centos7
+  # - distro: centos7
   - distro: centos8
     playbook: test-source-install.yml
   - distro: ubuntu1604
   - distro: ubuntu1804
     playbook: test-source-install.yml
-  - distro: debian8
+  - distro: ubuntu2004
     playbook: test-source-install.yml
+  # - distro: debian8
+    # playbook: test-source-install.yml
 
 script:
   # Download test shim.
