@@ -125,8 +125,8 @@
       when: ansible_os_family == 'Debian'
 
   roles:
-    - geerlingguy.certbot
-    - geerlingguy.nginx
+    - buluma.certbot
+    - buluma.nginx
 
   tasks:
     - name: Flush handlers in case any configs have changed.
