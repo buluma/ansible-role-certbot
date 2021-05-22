@@ -1,6 +1,6 @@
 # Ansible Role: Certbot (for Let's Encrypt)
 
-[![Build Status](https://travis-ci.com/buluma/ansible-role-certbot.svg?branch=master)](https://travis-ci.com/buluma/ansible-role-certbot) [![CI](https://github.com/buluma/ansible-role-certbot/actions/workflows/ci.yml/badge.svg)](https://github.com/buluma/ansible-role-certbot/actions/workflows/ci.yml)
+[![Build Status](https://travis-ci.com/buluma/ansible-role-certbot.svg?branch=master)](https://travis-ci.com/buluma/ansible-role-certbot) [![CI](https://github.com/buluma/ansible-role-certbot/actions/workflows/ci.yml/badge.svg)](https://github.com/buluma/ansible-role-certbot/actions/workflows/ci.yml) ![Ansible Role](https://img.shields.io/ansible/role/d/54612?color=blue)
 
 Installs and configures Certbot (for Let's Encrypt).
 
