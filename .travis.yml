@@ -11,7 +11,7 @@ env:
   - distro: ubuntu2004
     playbook: test-source-install.yml
   # - distro: debian8
-    # playbook: test-source-install.yml
+  # playbook: test-source-install.yml
 
 script:
   # Download test shim.
