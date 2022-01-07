@@ -60,6 +60,8 @@ jobs:
             experimental: false
           - distro: ubuntu1804
             playbook: converge.yml
+          - distro: ubuntu2004
+            playbook: converge.yml
             experimental: false
           - distro: debian10
             playbook: converge.yml
