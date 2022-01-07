@@ -66,9 +66,9 @@ jobs:
           - distro: debian10
             playbook: converge.yml
             experimental: false
-          - distro: centos7
-            playbook: playbook-source-install.yml
-            experimental: false
+          # - distro: centos7
+            # playbook: playbook-source-install.yml
+            # experimental: false
 
           - distro: centos7
             playbook: playbook-snap-install.yml
