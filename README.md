@@ -1,6 +1,6 @@
 # Ansible Role: Certbot (for Let's Encrypt)
 
-[![Build Status](https://travis-ci.com/buluma/ansible-role-certbot.svg?branch=master)](https://travis-ci.com/buluma/ansible-role-certbot) [![CI](https://github.com/buluma/ansible-role-certbot/actions/workflows/ci.yml/badge.svg)](https://github.com/buluma/ansible-role-certbot/actions/workflows/ci.yml) ![Ansible Role](https://img.shields.io/ansible/role/d/54612?color=blue)
+[![Build Status](https://travis-ci.com/buluma/ansible-role-certbot.svg?branch=master)](https://travis-ci.com/buluma/ansible-role-certbot) [![CI](https://github.com/buluma/ansible-role-certbot/actions/workflows/ci.yml/badge.svg)](https://github.com/buluma/ansible-role-certbot/actions/workflows/ci.yml) ![Ansible Role](https://img.shields.io/ansible/role/d/54612?color=blue) [![Release](https://github.com/buluma/ansible-role-certbot/actions/workflows/release.yml/badge.svg)](https://github.com/buluma/ansible-role-certbot/actions/workflows/release.yml)
 
 Installs and configures Certbot (for Let's Encrypt).
 
@@ -128,7 +128,3 @@ See full documentation and options on the [Certbot website](https://certbot.eff.
 ## License
 
 MIT / BSD
-
-## Author Information
-
-This role was created in 2016 by [Jeff Geerling](https://www.jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/).
