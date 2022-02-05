@@ -1,25 +1,29 @@
 ---
-services: docker
+#
+# Ansible managed
+#
+language: python
 
-env:
-  # - distro: centos7
-  - distro: centos8
-    playbook: test-source-install.yml
-  - distro: ubuntu1604
-  - distro: ubuntu1804
-    playbook: test-source-install.yml
-  - distro: ubuntu2004
-    playbook: test-source-install.yml
-  # - distro: debian8
-  # playbook: test-source-install.yml
+os: linux
+dist: xenial
+
+python:
+  - "3.9"
+
+services:
+  - docker
+
+cache:
+  - pip
+
+install:
+  - pip install --upgrade pip
+  - pip install ansible ansible-lint yamllint
 
 script:
-  # Download test shim.
-  - wget -O ${PWD}/tests/test.sh https://gist.githubusercontent.com/buluma/3e4a443e0e2cfdffa9137edff909917e/raw/
-  - chmod +x ${PWD}/tests/test.sh
-
-  # Run tests.
-  - ${PWD}/tests/test.sh
+  - yamllint .
+  - ansible-lint
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  email: false

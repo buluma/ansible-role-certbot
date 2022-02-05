@@ -1,28 +1,13 @@
 ---
-- name: Converge
+- name: converge
   hosts: all
-  become: true
-
-  vars:
-    certbot_auto_renew_user: root
-
-  pre_tasks:
-    - name: Update apt cache.
-      apt: update_cache=yes cache_valid_time=600
-      when: ansible_os_family == 'Debian'
-      changed_when: false
-
-    - name: Install dependencies (RedHat).
-      yum:
-        name:
-          - cronie
-          - epel-release
-        state: present
-      when: ansible_os_family == 'RedHat'
-
-    - name: Install cron (Debian).
-      apt: name=cron state=present
-      when: ansible_os_family == 'Debian'
+  become: yes
+  gather_facts: yes
 
   roles:
-    - buluma.certbot
+    - role: ansible-role-certbot
+      certbot_email: michael@buluma.me.ke
+      certbot_domains:
+        - buluma.me.ke
+        - buluma.co.ke
+      certbot_ci_mode: yes

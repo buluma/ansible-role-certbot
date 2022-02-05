@@ -1,34 +1,33 @@
 ---
-dependencies: []
-
 galaxy_info:
+  author: Michael Buluma
+  namespace: buluma
   role_name: certbot
-  author: buluma
-  description: "Installs and configures Certbot (for Let's Encrypt)."
-  company: "ShadowNet"
-  license: "license (BSD, MIT)"
-  min_ansible_version: 2.4
+  description: Install and configure certbot on your system.
+  license: Apache-2.0
+  company: none
+  min_ansible_version: "2.10"
+
   platforms:
     - name: EL
       versions:
-        - 7
         - 8
+    - name: Debian
+      versions:
+        - all
     - name: Fedora
+      versions:
+        - all
+    - name: OpenSUSE
       versions:
         - all
     - name: Ubuntu
       versions:
         - all
-    - name: Debian
-      versions:
-        - all
+
   galaxy_tags:
-    - networking
-    - system
-    - web
     - certbot
+    - acme
     - letsencrypt
-    - encryption
-    - certificates
-    - ssl
-    - https
+
+dependencies: []

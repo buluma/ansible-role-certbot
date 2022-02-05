@@ -1,130 +1,124 @@
-# Ansible Role: Certbot (for Let's Encrypt)
+# [certbot](#certbot)
 
-[![Build Status](https://travis-ci.com/buluma/ansible-role-certbot.svg?branch=master)](https://travis-ci.com/buluma/ansible-role-certbot) [![CI](https://github.com/buluma/ansible-role-certbot/actions/workflows/ci.yml/badge.svg)](https://github.com/buluma/ansible-role-certbot/actions/workflows/ci.yml) ![Ansible Role](https://img.shields.io/ansible/role/d/54612?color=blue) [![Release](https://github.com/buluma/ansible-role-certbot/actions/workflows/release.yml/badge.svg)](https://github.com/buluma/ansible-role-certbot/actions/workflows/release.yml)
+Install and configure certbot on your system.
 
-Installs and configures Certbot (for Let's Encrypt).
+|GitHub|GitLab|Quality|Downloads|Version|
+|------|------|-------|---------|-------|
+|[![github](https://github.com/buluma/ansible-role-certbot/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-certbot/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-certbot/badges/main/pipeline.svg)](https://gitlab.com/buluma/ansible-role-certbot)|[![quality](https://img.shields.io/ansible/quality/54612)](https://galaxy.ansible.com/buluma/certbot)|[![downloads](https://img.shields.io/ansible/role/d/54612)](https://galaxy.ansible.com/buluma/certbot)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-certbot.svg)](https://github.com/buluma/ansible-role-certbot/releases/)|
 
-## Requirements
+## [Example Playbook](#example-playbook)
 
-If installing from source, Git is required. You can install Git using the `geerlingguy.git` role.
+This example is taken from `molecule/default/converge.yml` and is tested on each push, pull request and release.
+```yaml
+---
+- name: converge
+  hosts: all
+  become: yes
+  gather_facts: yes
 
-Generally, installing from source (see section `Source Installation from Git`) leads to a better experience using Certbot and Let's Encrypt, especially if you're using an older OS release.
+  roles:
+    - role: buluma.certbot
+      certbot_email: robert@meinit.nl
+      certbot_domains:
+        - meinit.nl
+        - robertdebock.nl
+      certbot_ci_mode: yes
+```
 
-## Role Variables
+The machine needs to be prepared. In CI this is done using `molecule/default/prepare.yml`:
+```yaml
+---
+- name: prepare
+  hosts: all
+  become: yes
+  gather_facts: no
 
-The variable `certbot_install_from_source` controls whether to install Certbot from Git or package management. The latter is the default, so the variable defaults to `no`.
+  roles:
+    - role: buluma.bootstrap
+    - role: buluma.cron
+    - role: buluma.buildtools
+    - role: buluma.epel
+    - role: buluma.python_pip
+    - role: buluma.openssl
+      openssl_items:
+        - name: apache-httpd
+          common_name: "{{ ansible_fqdn }}"
+    - role: buluma.selinux
+    - role: buluma.httpd
+```
 
-    certbot_auto_renew: true
-    certbot_auto_renew_user: "{{ ansible_user }}"
-    certbot_auto_renew_hour: 3
-    certbot_auto_renew_minute: 30
-    certbot_auto_renew_options: "--quiet --no-self-upgrade"
 
-By default, this role configures a cron job to run under the provided user account at the given hour and minute, every day. The defaults run `certbot renew` (or `certbot-auto renew`) via cron every day at 03:30:00 by the user you use in your Ansible playbook. It's preferred that you set a custom user/hour/minute so the renewal is during a low-traffic period and done by a non-root user account.
+## [Role Variables](#role-variables)
 
-### Automatic Certificate Generation
+The default values for the variables are set in `defaults/main.yml`:
+```yaml
+---
+# defaults file for certbot
 
-Currently there is one built-in method for generating new certificates using this role: `standalone`. Other methods (e.g. using nginx or apache and a webroot) may be added in the future.
+# The certbot can configure either "apache", "haproxy", "nginx" or run "standalone".
+certbot_system: apache
 
-**For a complete example**: see the fully functional test playbook in [tests/test-standalone-nginx-aws.yml](tests/test-standalone-nginx-aws.yml).
+# You can have multiple domains, as a list to request a certificate for.
+certbot_domains:
+  - "{{ ansible_fqdn }}"
 
-    certbot_create_if_missing: no
-    certbot_create_method: standalone
+# An email-addres is required to register.
+certbot_email: your_email_address@example.com
+```
 
-Set `certbot_create_if_missing` to `yes` or `True` to let this role generate certs. Set the method used for generating certs with the `certbot_create_method` variable—current allowed values include: `standalone`.
+## [Requirements](#requirements)
 
-    certbot_admin_email: email@example.com
+- pip packages listed in [requirements.txt](https://github.com/buluma/ansible-role-certbot/blob/main/requirements.txt).
 
-The email address used to agree to Let's Encrypt's TOS and subscribe to cert-related notifications. This should be customized and set to an email address that you or your organization regularly monitors.
+## [Status of used roles](#status-of-requirements)
 
-    certbot_certs: []
-      # - email: janedoe@example.com
-      #   domains:
-      #     - example1.com
-      #     - example2.com
-      # - domains:
-      #     - example3.com
+The following roles are used to prepare a system. You can prepare your system in another way.
 
-A list of domains (and other data) for which certs should be generated. You can add an `email` key to any list item to override the `certbot_admin_email`.
+| Requirement | GitHub | GitLab |
+|-------------|--------|--------|
+|[buluma.bootstrap](https://galaxy.ansible.com/buluma/bootstrap)|[![Build Status GitHub](https://github.com/buluma/ansible-role-bootstrap/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-bootstrap/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-bootstrap/badges/main/pipeline.svg)](https://gitlab.com/buluma/ansible-role-bootstrap)|
+|[buluma.buildtools](https://galaxy.ansible.com/buluma/buildtools)|[![Build Status GitHub](https://github.com/buluma/ansible-role-buildtools/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-buildtools/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-buildtools/badges/main/pipeline.svg)](https://gitlab.com/buluma/ansible-role-buildtools)|
+|[buluma.cron](https://galaxy.ansible.com/buluma/cron)|[![Build Status GitHub](https://github.com/buluma/ansible-role-cron/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-cron/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-cron/badges/main/pipeline.svg)](https://gitlab.com/buluma/ansible-role-cron)|
+|[buluma.epel](https://galaxy.ansible.com/buluma/epel)|[![Build Status GitHub](https://github.com/buluma/ansible-role-epel/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-epel/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-epel/badges/main/pipeline.svg)](https://gitlab.com/buluma/ansible-role-epel)|
+|[buluma.httpd](https://galaxy.ansible.com/buluma/httpd)|[![Build Status GitHub](https://github.com/buluma/ansible-role-httpd/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-httpd/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-httpd/badges/main/pipeline.svg)](https://gitlab.com/buluma/ansible-role-httpd)|
+|[buluma.openssl](https://galaxy.ansible.com/buluma/openssl)|[![Build Status GitHub](https://github.com/buluma/ansible-role-openssl/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-openssl/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-openssl/badges/main/pipeline.svg)](https://gitlab.com/buluma/ansible-role-openssl)|
+|[buluma.python_pip](https://galaxy.ansible.com/buluma/python_pip)|[![Build Status GitHub](https://github.com/buluma/ansible-role-python_pip/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-python_pip/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-python_pip/badges/main/pipeline.svg)](https://gitlab.com/buluma/ansible-role-python_pip)|
+|[buluma.selinux](https://galaxy.ansible.com/buluma/selinux)|[![Build Status GitHub](https://github.com/buluma/ansible-role-selinux/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-selinux/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-selinux/badges/main/pipeline.svg)](https://gitlab.com/buluma/ansible-role-selinux)|
 
-    certbot_create_command: "{{ certbot_script }} certonly --standalone --noninteractive --agree-tos --email {{ cert_item.email | default(certbot_admin_email) }} -d {{ cert_item.domains | join(',') }}"
+## [Context](#context)
 
-The `certbot_create_command` defines the command used to generate the cert.
+This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://buluma.co.ke/) for further information.
 
-#### Standalone Certificate Generation
+Here is an overview of related roles:
 
-    certbot_create_standalone_stop_services:
-      - nginx
+![dependencies](https://raw.githubusercontent.com/buluma/ansible-role-certbot/png/requirements.png "Dependencies")
 
-Services that should be stopped while `certbot` runs it's own standalone server on ports 80 and 443. If you're running Apache, set this to `apache2` (Ubuntu), or `httpd` (RHEL), or if you have Nginx on port 443 and something else on port 80 (e.g. Varnish, a Java app, or something else), add it to the list so it is stopped when the certificate is generated.
+## [Compatibility](#compatibility)
 
-These services will only be stopped the first time a new cert is generated.
+This role has been tested on these [container images](https://hub.docker.com/u/buluma):
 
-### Source Installation from Git
+|container|tags|
+|---------|----|
+|el|8|
+|debian|all|
+|fedora|all|
+|opensuse|all|
+|ubuntu|all|
 
-You can install Certbot from it's Git source repository if desired. This might be useful in several cases, but especially when older distributions don't have Certbot packages available (e.g. CentOS < 7, Ubuntu < 16.10 and Debian < 8).
+The minimum version of Ansible required is 2.10, tests have been done to:
 
-    certbot_install_from_source: no
-    certbot_repo: https://github.com/certbot/certbot.git
-    certbot_version: master
-    certbot_keep_updated: yes
+- The previous version.
+- The current version.
+- The development version.
 
-Certbot Git repository options. To install from source, set `certbot_install_from_source` to `yes`. This clones the configured `certbot_repo`, respecting the `certbot_version` setting. If `certbot_keep_updated` is set to `yes`, the repository is updated every time this role runs.
 
-    certbot_dir: /opt/certbot
 
-The directory inside which Certbot will be cloned.
+If you find issues, please register them in [GitHub](https://github.com/buluma/ansible-role-certbot/issues)
 
-## Dependencies
+## [License](#license)
 
-None.
+Apache-2.0
 
-## Example Playbook
+## [Author Information](#author-information)
 
-    - hosts: servers
-    
-      vars:
-        certbot_auto_renew_user: your_username_here
-        certbot_auto_renew_minute: 20
-        certbot_auto_renew_hour: 5
-    
-      roles:
-        - buluma.certbot
-
-See other examples in the `tests/` directory.
-
-### Manually creating certificates with certbot
-
-_Note: You can have this role automatically generate certificates; see the "Automatic Certificate Generation" documentation above._
-
-You can manually create certificates using the `certbot` (or `certbot-auto`) script (use `letsencrypt` on Ubuntu 16.04, or use `/opt/certbot/certbot-auto` if installing from source/Git. Here are some example commands to configure certificates with Certbot:
-
-    # Automatically add certs for all Apache virtualhosts (use with caution!).
-    certbot --apache
-
-    # Generate certs, but don't modify Apache configuration (safer).
-    certbot --apache certonly
-
-If you want to fully automate the process of adding a new certificate, but don't want to use this role's built in functionality, you can do so using the command line options to register, accept the terms of service, and then generate a cert using the standalone server:
-
-  1. Make sure any services listening on ports 80 and 443 (Apache, Nginx, Varnish, etc.) are stopped.
-  2. Register with something like `certbot register --agree-tos --email [your-email@example.com]`
-    - Note: You won't need to do this step in the future, when generating additional certs on the same server.
-  3. Generate a cert for a domain whose DNS points to this server: `certbot certonly --noninteractive --standalone -d example.com -d www.example.com`
-  4. Re-start whatever was listening on ports 80 and 443 before.
-  5. Update your webserver's virtualhost TLS configuration to point at the new certificate (`fullchain.pem`) and private key (`privkey.pem`) Certbot just generated for the domain you passed in the `certbot` command.
-  6. Reload or restart your webserver so it uses the new HTTPS virtualhost configuration.
-
-### Certbot certificate auto-renewal
-
-By default, this role adds a cron job that will renew all installed certificates once per day at the hour and minute of your choosing.
-
-You can test the auto-renewal (without actually renewing the cert) with the command:
-
-    /opt/certbot/certbot-auto renew --dry-run
-
-See full documentation and options on the [Certbot website](https://certbot.eff.org/).
-
-## License
-
-MIT / BSD
+[Michael Buluma](https://buluma.github.io/)

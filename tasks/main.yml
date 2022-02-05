@@ -1,25 +1,48 @@
 ---
-- import_tasks: include-vars.yml
+# tasks file for certbot
 
-- import_tasks: setup-RedHat.yml
-  when: ansible_os_family == 'RedHat'
+- name: import assert.yml
+  ansible.builtin.import_tasks: assert.yml
+  run_once: yes
+  delegate_to: localhost
 
-- import_tasks: install-with-package.yml
-  when: certbot_install_method == 'package'
+- name: install certbot
+  ansible.builtin.package:
+    name: "{{ certbot_packages }}"
+    state: present
 
-- import_tasks: install-with-snap.yml
-  when: certbot_install_method == 'snap'
-
-- import_tasks: install-from-source.yml
-  when: certbot_install_method == 'source'
-
-- include_tasks: create-cert-standalone.yml
-  with_items: "{{ certbot_certs }}"
+- name: get and install certificates (Standalone)
+  ansible.builtin.command:
+    cmd: |
+      certbot certonly --noninteractive
+      --{{ certbot_system }}
+      --domain {{ certbot_domains | join(',') }}
+      --agree-tos
+      --email {{ certbot_email }}
+    creates: /etc/letsencrypt/accounts
   when:
-    - certbot_create_if_missing
-    - certbot_create_method == 'standalone'
-  loop_control:
-    loop_var: cert_item
+    - certbot_ci_mode is not defined
+    - certbot_system == "standalone"
 
-- import_tasks: renew-cron.yml
-  when: certbot_auto_renew
+- name: get and install certificates (Managed)
+  ansible.builtin.command:
+    cmd: |
+      certbot --noninteractive
+      --{{ certbot_system }}
+      --domain {{ certbot_domains | join(',') }}
+      --agree-tos
+      --email {{ certbot_email }}
+      --no-redirect
+    creates: /etc/letsencrypt/accounts
+  when:
+    - certbot_ci_mode is not defined
+    - certbot_system != "standalone"
+
+- name: set up automatic renewal
+  ansible.builtin.cron:
+    name: certbot
+    minute: "16"
+    hour: "2,14"
+    job: "/usr/bin/certbot renew -q"
+  notify:
+    - restart certbot_system
