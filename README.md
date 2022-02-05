@@ -4,7 +4,7 @@ Install and configure certbot on your system.
 
 |GitHub|GitLab|Quality|Downloads|Version|
 |------|------|-------|---------|-------|
-|[![github](https://github.com/buluma/ansible-role-certbot/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-certbot/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-certbot/badges/main/pipeline.svg)](https://gitlab.com/buluma/ansible-role-certbot)|[![quality](https://img.shields.io/ansible/quality/54612)](https://galaxy.ansible.com/buluma/certbot)|[![downloads](https://img.shields.io/ansible/role/d/54612)](https://galaxy.ansible.com/buluma/certbot)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-certbot.svg)](https://github.com/buluma/ansible-role-certbot/releases/)|
+|[![github](https://github.com/buluma/ansible-role-certbot/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-certbot/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-certbot/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-certbot)|[![quality](https://img.shields.io/ansible/quality/54612)](https://galaxy.ansible.com/buluma/certbot)|[![downloads](https://img.shields.io/ansible/role/d/54612)](https://galaxy.ansible.com/buluma/certbot)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-certbot.svg)](https://github.com/buluma/ansible-role-certbot/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
