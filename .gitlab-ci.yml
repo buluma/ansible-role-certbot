@@ -64,5 +64,8 @@ testing:
 
 galaxy:
   script:
-    # - ansible-galaxy role info ${CI_PROJECT_NAMESPACE}.${CI_PROJECT_NAME}
     - ansible-galaxy role info buluma.certbot
+
+test_role:
+  script:
+    - ansible-galaxy install buluma.certbot

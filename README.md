@@ -18,13 +18,12 @@ This example is taken from `molecule/default/converge.yml` and is tested on each
 
   roles:
     - role: buluma.certbot
-      certbot_email: unknown@unknown.nz
+      certbot_email: michael@buluma.me.ke
       certbot_domains:
-        - unknown.nz
-        - unknownweb.nz
+        - buluma.me.ke
+        - buluma.co.ke
       certbot_ci_mode: yes
 ```
-<!-- for obvious reasons -->
 
 The machine needs to be prepared. In CI this is done using `molecule/default/prepare.yml`:
 ```yaml
