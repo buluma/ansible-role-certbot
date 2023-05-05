@@ -31,8 +31,7 @@ _certbot_system_to_restart:
     Alpine: apache2
     Debian: apache2
     Suse: apache2
-    RedHat: &redhat_system_to_restart httpd
-    Rocky: *redhat_system_to_restart
+    RedHat: httpd
   nginx:
     default: nginx
   haproxy:
@@ -40,4 +39,4 @@ _certbot_system_to_restart:
   standalone:
     default: []
 
-certbot_system_to_restart: "{{ _certbot_system_to_restart[certbot_system][ansible_os_family] | default(_certbot_system_to_restart[certbot_system]['default'] ) }}"
+certbot_system_to_restart: "{{ _certbot_system_to_restart[certbot_system][ansible_os_family] | default(_certbot_system_to_restart[certbot_system]['default']) }}"
