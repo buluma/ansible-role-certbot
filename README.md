@@ -1,10 +1,10 @@
-# [certbot](#certbot)
+# [Ansible role certbot](#certbot)
 
 Install and configure certbot on your system.
 
-|GitHub|GitLab|Quality|Downloads|Version|Issues|Pull Requests|
-|------|------|-------|---------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-certbot/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-certbot/actions)|[![gitlab](https://gitlab.com/shadowwalker/ansible-role-certbot/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-certbot)|[![quality](https://img.shields.io/ansible/quality/54612)](https://galaxy.ansible.com/buluma/certbot)|[![downloads](https://img.shields.io/ansible/role/d/54612)](https://galaxy.ansible.com/buluma/certbot)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-certbot.svg)](https://github.com/buluma/ansible-role-certbot/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-certbot.svg)](https://github.com/buluma/ansible-role-certbot/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-certbot.svg)](https://github.com/buluma/ansible-role-certbot/pulls/)|
+|GitHub|GitLab|Downloads|Version|Issues|Pull Requests|
+|------|------|-------|-------|------|-------------|
+|[![github](https://github.com/buluma/ansible-role-certbot/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-certbot/actions)|[![gitlab](https://gitlab.com/shadowwalker/ansible-role-certbot/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-certbot)|[![downloads](https://img.shields.io/ansible/role/d/4665)](https://galaxy.ansible.com/buluma/certbot)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-certbot.svg)](https://github.com/buluma/ansible-role-certbot/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-certbot.svg)](https://github.com/buluma/ansible-role-certbot/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-certbot.svg)](https://github.com/buluma/ansible-role-certbot/pulls/)|
 
 ## [Example Playbook](#example-playbook)
 
