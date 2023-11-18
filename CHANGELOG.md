@@ -1,5 +1,9 @@
 # Changelog
 
+## [4.0.2](https://github.com/buluma/ansible-role-certbot/tree/4.0.2) (2023-05-05)
+
+[Full Changelog](https://github.com/buluma/ansible-role-certbot/compare/4.0.1...4.0.2)
+
 ## [4.0.1](https://github.com/buluma/ansible-role-certbot/tree/4.0.1) (2022-09-11)
 
 [Full Changelog](https://github.com/buluma/ansible-role-certbot/compare/3.0.10...4.0.1)
