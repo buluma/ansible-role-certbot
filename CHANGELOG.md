@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/buluma/ansible-role-certbot/tree/HEAD)
 
-[Full Changelog](https://github.com/buluma/ansible-role-certbot/compare/4.0.2...HEAD)
+[Full Changelog](https://github.com/buluma/ansible-role-certbot/compare/4.0.3...HEAD)
+
+**Closed issues:**
+
+- Update buluma/todo-to-issue-action@v1.0.1 @buluma [\#30](https://github.com/buluma/ansible-role-certbot/issues/30)
+
+## [4.0.3](https://github.com/buluma/ansible-role-certbot/tree/4.0.3) (2023-11-19)
+
+[Full Changelog](https://github.com/buluma/ansible-role-certbot/compare/4.0.2...4.0.3)
 
 **Closed issues:**
 
