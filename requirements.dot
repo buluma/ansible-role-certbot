@@ -1,0 +1,23 @@
+digraph PhiloDilemma {
+  label = "Michael Buluma" ;
+  overlap=false
+  {
+    "certbot" [fillcolor=yellow style=filled penwidth=3]
+    "buluma.bootstrap" [fillcolor=green style=filled]
+    "buluma.buildtools" [fillcolor=green style=filled]
+    "buluma.cron" [fillcolor=green style=filled]
+    "buluma.epel" [fillcolor=green style=filled]
+    "buluma.httpd" [fillcolor=green style=filled]
+    "buluma.openssl" [fillcolor=green style=filled]
+    "buluma.python_pip" [fillcolor=green style=filled]
+    "buluma.selinux" [fillcolor=green style=filled]
+  }
+  "certbot" -> "buluma.bootstrap"
+  "certbot" -> "buluma.buildtools"
+  "certbot" -> "buluma.cron"
+  "certbot" -> "buluma.epel"
+  "certbot" -> "buluma.httpd"
+  "certbot" -> "buluma.openssl"
+  "certbot" -> "buluma.python_pip"
+  "certbot" -> "buluma.selinux"
+}
