@@ -14,8 +14,8 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 ---
 - name: converge
   hosts: all
-  become: yes
-  gather_facts: yes
+  become: true
+  gather_facts: true
 
   roles:
     - role: buluma.certbot
@@ -23,7 +23,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
       certbot_domains:
         - buluma.me.ke
         - buluma.co.ke
-      certbot_ci_mode: yes
+      certbot_ci_mode: true
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/buluma/ansible-role-certbot/blob/master/molecule/default/prepare.yml):
@@ -32,8 +32,8 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
 ---
 - name: prepare
   hosts: all
-  become: yes
-  gather_facts: no
+  become: true
+  gather_facts: false
 
   roles:
     - role: buluma.bootstrap
