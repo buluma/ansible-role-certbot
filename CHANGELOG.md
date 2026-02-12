@@ -7,6 +7,8 @@
 **Closed issues:**
 
 - Update buluma/todo-to-issue-action@v1.0.1 @buluma [\#30](https://github.com/buluma/ansible-role-certbot/issues/30)
+- Update action [\#29](https://github.com/buluma/ansible-role-certbot/issues/29)
+- rebuild action [\#28](https://github.com/buluma/ansible-role-certbot/issues/28)
 
 ## [4.0.3](https://github.com/buluma/ansible-role-certbot/tree/4.0.3) (2023-11-19)
 
