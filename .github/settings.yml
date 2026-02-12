@@ -5,4 +5,4 @@
 repository:
   description: Install and configure certbot on your system.
   homepage: https://buluma.github.io/
-  topics: certbot, acme, letsencrypt, ansible, molecule, tox, playbook
+  topics: certbot, acme, letsencrypt, ansible, molecule, playbook
