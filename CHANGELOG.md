@@ -10,6 +10,10 @@
 - Update action [\#29](https://github.com/buluma/ansible-role-certbot/issues/29)
 - rebuild action [\#28](https://github.com/buluma/ansible-role-certbot/issues/28)
 
+**Merged pull requests:**
+
+- Bump actions/checkout from 4 to 6 [\#32](https://github.com/buluma/ansible-role-certbot/pull/32) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [4.0.3](https://github.com/buluma/ansible-role-certbot/tree/4.0.3) (2023-11-19)
 
 [Full Changelog](https://github.com/buluma/ansible-role-certbot/compare/4.0.2...4.0.3)
