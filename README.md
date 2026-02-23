@@ -11,42 +11,40 @@ Install and configure certbot on your system.
 This example is taken from [`molecule/default/converge.yml`](https://github.com/buluma/ansible-role-certbot/blob/master/molecule/default/converge.yml) and is tested on each push, pull request and release.
 
 ```yaml
----
-- name: converge
-  hosts: all
-  become: true
-  gather_facts: true
+  - name: converge
+    hosts: all
+    become: true
+    gather_facts: true
 
-  roles:
-    - role: buluma.certbot
-      certbot_email: mail@email.com
-      certbot_domains:
-        - buluma.me.ke
-        - buluma.co.ke
-      certbot_ci_mode: true
+    roles:
+      - role: buluma.certbot
+        certbot_email: mail@email.com
+        certbot_domains:
+          - buluma.me.ke
+          - buluma.co.ke
+        certbot_ci_mode: true
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/buluma/ansible-role-certbot/blob/master/molecule/default/prepare.yml):
 
 ```yaml
----
-- name: prepare
-  hosts: all
-  become: true
-  gather_facts: false
+  - name: prepare
+    hosts: all
+    become: true
+    gather_facts: false
 
-  roles:
-    - role: buluma.bootstrap
-    - role: buluma.cron
-    - role: buluma.buildtools
-    - role: buluma.epel
-    - role: buluma.python_pip
-    - role: buluma.openssl
-      openssl_items:
-        - name: apache-httpd
-          common_name: "{{ ansible_fqdn }}"
-    - role: buluma.selinux
-    - role: buluma.httpd
+    roles:
+      - role: buluma.bootstrap
+      - role: buluma.cron
+      - role: buluma.buildtools
+      - role: buluma.epel
+      - role: buluma.python_pip
+      - role: buluma.openssl
+        openssl_items:
+          - name: apache-httpd
+            common_name: "{{ ansible_fqdn }}"
+      - role: buluma.selinux
+      - role: buluma.httpd
 ```
 
 Also see a [full explanation and example](https://buluma.github.io/how-to-use-these-roles.html) on how to use these roles.
@@ -56,7 +54,6 @@ Also see a [full explanation and example](https://buluma.github.io/how-to-use-th
 The default values for the variables are set in [`defaults/main.yml`](https://github.com/buluma/ansible-role-certbot/blob/master/defaults/main.yml):
 
 ```yaml
----
 # defaults file for certbot
 
 # The certbot can configure either "apache", "haproxy", "nginx" or run "standalone".
