@@ -11,6 +11,7 @@ Install and configure certbot on your system.
 This example is taken from [`molecule/default/converge.yml`](https://github.com/buluma/ansible-role-certbot/blob/master/molecule/default/converge.yml) and is tested on each push, pull request and release.
 
 ```yaml
+---
   - name: converge
     hosts: all
     become: true
@@ -28,6 +29,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/buluma/ansible-role-certbot/blob/master/molecule/default/prepare.yml):
 
 ```yaml
+---
   - name: prepare
     hosts: all
     become: true
@@ -54,6 +56,7 @@ Also see a [full explanation and example](https://buluma.github.io/how-to-use-th
 The default values for the variables are set in [`defaults/main.yml`](https://github.com/buluma/ansible-role-certbot/blob/master/defaults/main.yml):
 
 ```yaml
+---
 # defaults file for certbot
 
 # The certbot can configure either "apache", "haproxy", "nginx" or run "standalone".
