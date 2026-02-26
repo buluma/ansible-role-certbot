@@ -1,5 +1,32 @@
 # Changelog
 
+## [Unreleased](https://github.com/buluma/ansible-role-certbot/tree/HEAD)
+
+[Full Changelog](https://github.com/buluma/ansible-role-certbot/compare/4.0.3...HEAD)
+
+**Closed issues:**
+
+- Update buluma/todo-to-issue-action@v1.0.1 @buluma [\#30](https://github.com/buluma/ansible-role-certbot/issues/30)
+- Update action [\#29](https://github.com/buluma/ansible-role-certbot/issues/29)
+- rebuild action [\#28](https://github.com/buluma/ansible-role-certbot/issues/28)
+
+**Merged pull requests:**
+
+- Bump actions/checkout from 4 to 6 [\#32](https://github.com/buluma/ansible-role-certbot/pull/32) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [4.0.3](https://github.com/buluma/ansible-role-certbot/tree/4.0.3) (2023-11-19)
+
+[Full Changelog](https://github.com/buluma/ansible-role-certbot/compare/4.0.2...4.0.3)
+
+**Closed issues:**
+
+- Update buluma/todo-to-issue-action@v1.0.1 @buluma [\#27](https://github.com/buluma/ansible-role-certbot/issues/27)
+- Update action [\#26](https://github.com/buluma/ansible-role-certbot/issues/26)
+
+## [4.0.2](https://github.com/buluma/ansible-role-certbot/tree/4.0.2) (2023-05-05)
+
+[Full Changelog](https://github.com/buluma/ansible-role-certbot/compare/4.0.1...4.0.2)
+
 ## [4.0.1](https://github.com/buluma/ansible-role-certbot/tree/4.0.1) (2022-09-11)
 
 [Full Changelog](https://github.com/buluma/ansible-role-certbot/compare/3.0.10...4.0.1)
