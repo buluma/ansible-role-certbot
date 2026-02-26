@@ -64,7 +64,7 @@ certbot_system: apache
 
 # You can have multiple domains, as a list to request a certificate for.
 certbot_domains:
-- "{{ ansible_fqdn }}"
+  - "{{ ansible_fqdn }}"
 
 # An email-addres is required to register.
 certbot_email: your_email_address@example.com
