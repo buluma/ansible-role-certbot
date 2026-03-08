@@ -5,9 +5,9 @@
   gather_facts: true
 
   roles:
-  - role: buluma.certbot
-    certbot_email: mail@email.com
-    certbot_domains:
-    - buluma.me.ke
-    - buluma.co.ke
-    certbot_ci_mode: true
+    - role: buluma.certbot
+      certbot_email: mail@email.com
+      certbot_domains:
+        - buluma.me.ke
+        - buluma.co.ke
+      certbot_ci_mode: true
