@@ -13,6 +13,7 @@
 **Merged pull requests:**
 
 - Bump actions/checkout from 4 to 6 [\#32](https://github.com/buluma/ansible-role-certbot/pull/32) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump buluma/molecule-action from 5.0.1 to 5.0.4 [\#24](https://github.com/buluma/ansible-role-certbot/pull/24) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [4.0.3](https://github.com/buluma/ansible-role-certbot/tree/4.0.3) (2023-11-19)
 
