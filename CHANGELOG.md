@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/buluma/ansible-role-certbot/tree/HEAD)
+## [26.6.0](https://github.com/buluma/ansible-role-certbot/tree/26.6.0) (2026-06-14)
 
-[Full Changelog](https://github.com/buluma/ansible-role-certbot/compare/4.0.3...HEAD)
+[Full Changelog](https://github.com/buluma/ansible-role-certbot/compare/4.0.3...26.6.0)
 
 **Closed issues:**
 
